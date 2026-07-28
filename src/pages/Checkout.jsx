@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 function Checkout() {
-  const { cart, totalPrecio } = useCart();
+  const { cart, totalPrecio, clearCart } = useCart();
 
   const [datos, setDatos] = useState({
     nombre: "",
@@ -31,6 +31,7 @@ function Checkout() {
     try {
       const docRef = await addDoc(collection(db, "ordenes"), orden);
       setOrdenId(docRef.id);
+      clearCart();
     } catch (error) {
       console.error("Error al crear la orden:", error);
     }

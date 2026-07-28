@@ -1,9 +1,11 @@
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 function ItemListContainer() {
+  const { categoria } = useParams();
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +13,14 @@ function ItemListContainer() {
   useEffect(() => {
     async function fetchProductos() {
       try {
-        const querySnapshot = await getDocs(collection(db, "productos"));
+        const productosRef = collection(db, "productos");
+
+        const consulta = categoria
+          ? query(productosRef, where("categoria", "==", categoria))
+          : productosRef;
+
+        const querySnapshot = await getDocs(consulta);
+
         const productos = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -25,7 +34,7 @@ function ItemListContainer() {
     }
 
     fetchProductos();
-  }, []);
+  }, [categoria]);
 
   return (
     <div>
