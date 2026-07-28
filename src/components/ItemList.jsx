@@ -2,11 +2,11 @@ import Item from "./Item";
 
 function ItemList({ productos }) {
   return (
-    <ul>
+    <div className="item-list">
       {productos.map((producto) => (
         <Item key={producto.id} producto={producto} />
       ))}
-    </ul>
+    </div>
   );
 }
 

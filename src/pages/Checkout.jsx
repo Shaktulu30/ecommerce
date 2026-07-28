@@ -40,7 +40,7 @@ function Checkout() {
   return (
     <div>
       {ordenId ? (
-        <div>
+        <div className="page">
           <h1>¡Compra realizada con éxito!</h1>
           <p>El ID de tu orden es: {ordenId}</p>
         </div>
@@ -53,20 +53,23 @@ function Checkout() {
               placeholder="Nombre"
               value={datos.nombre}
               onChange={handleChange}
+              className="form-input"
             />
             <input
               name="email"
               placeholder="Email"
               value={datos.email}
               onChange={handleChange}
+              className="form-input"
             />
             <input
               name="telefono"
               placeholder="Teléfono"
               value={datos.telefono}
               onChange={handleChange}
+              className="form-input"
             />
-            <button type="submit">Confirmar compra</button>
+            <button className="btn" type="submit">Confirmar compra</button>
           </form>
         </div>
       )}

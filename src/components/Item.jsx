@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 
-function Item ({ producto }) {
-    const { addToCart } = useCart();
-
-    return (
-        <li>
-            <Link to={`/product/${producto.id}`}>{producto.nombre}</Link> - ${producto.precio}
-            <button onClick={() => addToCart(producto)}>Agregar</button>
-        </li>
-    );
+function Item({ producto }) {
+  return (
+    <Link to={`/product/${producto.id}`} className="item-card">
+      <span className="item-nombre">{producto.nombre}</span>
+      <p className="item-precio">${producto.precio}</p>
+    </Link>
+  );
 }
 
 export default Item;

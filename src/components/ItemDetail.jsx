@@ -14,7 +14,7 @@ function ItemDetail({ producto }) {
   }
 
   return (
-    <div>
+    <div className="detail-card">
       <h2>{producto.nombre}</h2>
       <p>Precio: ${producto.precio}</p>
       <p>Stock: {producto.stock}</p>
