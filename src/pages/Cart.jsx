@@ -1,8 +1,9 @@
+import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function Cart() {
-  const { cart, removeFromCart, totalPrecio } = useCart();
+  const { cart, totalPrecio } = useCart();
 
   return (
     <div>
@@ -12,14 +13,7 @@ function Cart() {
       ) : (
         <div>
           {cart.map((item) => (
-            <div key={item.id}>
-              <p>
-                {item.nombre} - Cantidad: {item.cantidad} - Subtotal: $
-                {item.precio * item.cantidad}
-              </p>
-              <button onClick={() => removeFromCart(item.id)}>Quitar</button>
-              <Link to="/checkout">Finalizar compra</Link>
-            </div>
+            <CartItem key={item.id} item={item} />
           ))}
           <h3>Total: ${totalPrecio()}</h3>
         </div>
