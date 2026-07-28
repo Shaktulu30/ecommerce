@@ -19,7 +19,9 @@ function ItemDetail({ producto }) {
       <p>Precio: ${producto.precio}</p>
       <p>Stock: {producto.stock}</p>
       <p>{producto.categoria}</p>
-      {agregado ? (
+      {producto.stock === 0 ? (
+        <p>Sin stock</p>
+      ) : agregado ? (
         <Link to="/cart">Ir al carrito</Link>
       ) : (
         <ItemCount stock={producto.stock} onAdd={handleAdd} />
