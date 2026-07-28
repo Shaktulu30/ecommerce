@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function Cart() {
@@ -17,6 +18,7 @@ function Cart() {
                 {item.precio * item.cantidad}
               </p>
               <button onClick={() => removeFromCart(item.id)}>Quitar</button>
+              <Link to="/checkout">Finalizar compra</Link>
             </div>
           ))}
           <h3>Total: ${totalPrecio()}</h3>
