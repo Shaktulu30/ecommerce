@@ -27,10 +27,20 @@ export function CartProvider({ children }) {
     return cart.reduce((total, item) => total + item.cantidad, 0);
   }
 
+  function removeFromCart(id) {
+    setCart(cart.filter((item) => item.id !== id));
+  }
+
+  function totalPrecio() {
+    return cart.reduce((total, item) => total + item.precio * item.cantidad, 0);
+  }
+
   const value = {
     cart,
     addToCart,
-    totalItems
+    totalItems,
+    removeFromCart,
+    totalPrecio,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
