@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 // 1. Crear el contexto (la caja)
 const CartContext = createContext();
@@ -7,20 +7,33 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
-  function addToCart(product) {
-    setCart([...cart, product]);
+  function addToCart(product, cantidad) {
+    const existe = cart.find((item) => item.id === product.id);
+
+    if (existe) {
+      setCart(
+        cart.map((item) =>
+          item.id === product.id
+            ? { ...item, cantidad: item.cantidad + cantidad }
+            : item,
+        ),
+      );
+    } else {
+      setCart([...cart, { ...product, cantidad }]);
+    }
+  }
+
+  function totalItems() {
+    return cart.reduce((total, item) => total + item.cantidad, 0);
   }
 
   const value = {
     cart,
     addToCart,
+    totalItems
   };
 
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 // 3. Un hook para consumir más fácil

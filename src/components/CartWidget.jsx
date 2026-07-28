@@ -1,9 +1,9 @@
 import { useCart } from "../context/CartContext";
 
 function CartWidget() {
-    const { cart } = useCart();
+    const { totalItems } = useCart();
 
-    return <span>{cart.length}</span>;
+    return <span>{totalItems()}</span>;
 }
 
 export default CartWidget;
