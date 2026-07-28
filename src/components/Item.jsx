@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function Item ({ producto }) {
@@ -5,7 +6,7 @@ function Item ({ producto }) {
 
     return (
         <li>
-            {producto.nombre} - ${producto.precio}
+            <Link to={`/product/${producto.id}`}>{producto.nombre}</Link> - ${producto.precio}
             <button onClick={() => addToCart(producto)}>Agregar</button>
         </li>
     );
