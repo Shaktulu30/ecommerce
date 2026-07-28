@@ -15,6 +15,7 @@ function ItemDetail({ producto }) {
 
   return (
     <div className="detail-card">
+      <img src={producto.imagen} alt={producto.nombre} className="detail-img" />
       <h2>{producto.nombre}</h2>
       <p>Precio: ${producto.precio}</p>
       <p>Stock: {producto.stock}</p>
@@ -22,7 +23,7 @@ function ItemDetail({ producto }) {
       {producto.stock === 0 ? (
         <p>Sin stock</p>
       ) : agregado ? (
-        <Link to="/cart">Ir al carrito</Link>
+        <Link className="btn" to="/cart">Ir al carrito</Link>
       ) : (
         <ItemCount stock={producto.stock} onAdd={handleAdd} />
       )}

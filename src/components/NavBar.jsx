@@ -6,9 +6,10 @@ function NavBar() {
     <nav className="navbar">
       <Link to="/" className="nav-link">Inicio</Link>
       <Link to="/cart" className="nav-link">Carrito</Link>
-      <Link to="/category/ropa" className="nav-link">Ropa</Link>
-      <Link to="/category/calzado" className="nav-link">Calzado</Link>
-      <Link to="/category/accesorios" className="nav-link">Accesorios</Link>
+      <Link to="/category/perifericos" className="nav-link">Perifericos</Link>
+      <Link to="/category/componentes" className="nav-link">Componentes</Link>
+      <Link to="/category/monitores" className="nav-link">Monitores</Link>
+      <Link to="/category/almacenamiento" className="nav-link">Almacenamiento</Link>
       <CartWidget />
     </nav>
   );
