@@ -1,4 +1,4 @@
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
@@ -30,6 +30,14 @@ function Checkout() {
 
     try {
       const docRef = await addDoc(collection(db, "ordenes"), orden);
+      
+      //descontar el stock por cada producto comprado
+      for (const item of cart) {
+        const productoRef = doc(db, "productos", item.id);
+        await updateDoc(productoRef, {
+          stock: item.stock - item.cantidad,
+        });
+      }
       setOrdenId(docRef.id);
       clearCart();
     } catch (error) {
@@ -69,7 +77,9 @@ function Checkout() {
               onChange={handleChange}
               className="form-input"
             />
-            <button className="btn" type="submit">Confirmar compra</button>
+            <button className="btn" type="submit">
+              Confirmar compra
+            </button>
           </form>
         </div>
       )}
