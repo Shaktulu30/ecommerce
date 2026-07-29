@@ -5,22 +5,28 @@ function ItemCount({ stock, onAdd }) {
 
   function restar() {
     if (cantidad > 1) {
-        setCantidad(cantidad - 1);
+      setCantidad(cantidad - 1);
     }
   }
 
   function sumar() {
     if (cantidad < stock) {
-        setCantidad(cantidad + 1);
+      setCantidad(cantidad + 1);
     }
   }
 
   return (
     <div>
       <p>Cantidad: {cantidad}</p>
-      <button className="btn" onClick={restar}>-</button>
-      <button className="btn" onClick={sumar}>+</button>
-      <button className="btn" onClick={() => onAdd(cantidad)}>Agregar al carrito</button>
+      <button className="btn" onClick={restar}>
+        -
+      </button>
+      <button className="btn" onClick={sumar}>
+        +
+      </button>
+      <button className="btn" onClick={() => onAdd(cantidad)}>
+        Agregar al carrito
+      </button>
     </div>
   );
 }

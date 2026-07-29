@@ -9,21 +9,21 @@ function ItemDetailContainer() {
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  async function fetchProducto() {
-    try {
-      const docRef = doc(db, "productos", id);
-      const docSnap = await getDoc(docRef);
-      setProducto({ id: docSnap.id, ...docSnap.data() });
-      setLoading(false);
-    } catch (err) {
-      console.error(err);
-      setLoading(false);
+  useEffect(() => {
+    async function fetchProducto() {
+      try {
+        const docRef = doc(db, "productos", id);
+        const docSnap = await getDoc(docRef);
+        setProducto({ id: docSnap.id, ...docSnap.data() });
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        setLoading(false);
+      }
     }
-  }
 
-  fetchProducto();
-}, [id]);
+    fetchProducto();
+  }, [id]);
 
   return (
     <div>

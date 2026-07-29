@@ -33,12 +33,8 @@ body {
   border: 1px solid #333;
   border-radius: 10px;
   padding: 16px;
-  margin: 10px;
-  display: inline-block;
-  width: 200px;
   text-decoration: none;
   color: inherit;
-  display: inline-block;
 }
 
 .item-nombre {
@@ -54,10 +50,12 @@ body {
 }
 
 .item-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .navbar {
@@ -180,17 +178,18 @@ body {
     text-align: center;
   }
 
-  .item-card {
-    width: 100%;
-    max-width: 280px;
-  }
-
   .detail-card {
     margin: 20px 15px;
   }
 
   .page {
     padding: 15px;
+  }
+
+  .item-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    padding: 10px;
   }
 }
 

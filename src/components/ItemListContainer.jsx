@@ -38,7 +38,7 @@ function ItemListContainer() {
 
   return (
     <div>
-      <h1 className="page">Catálogo de productos</h1>
+      <h1>Catálogo de productos</h1>
       {loading && <p>Cargando...</p>}
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
       {!loading && !error && <ItemList productos={productos} />}
