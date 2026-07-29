@@ -45,9 +45,9 @@ function Checkout() {
           <p>El ID de tu orden es: {ordenId}</p>
         </div>
       ) : (
-        <div>
+        <div className="page">
           <h1>Checkout</h1>
-          <form onSubmit={handleSubmit}>
+          <form className="checkout-form" onSubmit={handleSubmit}>
             <input
               name="nombre"
               placeholder="Nombre"

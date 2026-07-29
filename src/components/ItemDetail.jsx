@@ -21,9 +21,21 @@ function ItemDetail({ producto }) {
       <p>Stock: {producto.stock}</p>
       <p>{producto.categoria}</p>
       {producto.stock === 0 ? (
-        <p>Sin stock</p>
+        <div>
+          <p>Sin stock</p>
+          <Link to="/" className="btn">
+            Volver al catálogo
+          </Link>
+        </div>
       ) : agregado ? (
-        <Link className="btn" to="/cart">Ir al carrito</Link>
+        <div>
+          <Link className="btn" to="/cart">
+            Ir al carrito
+          </Link>
+          <Link to="/" className="btn">
+            Seguir comprando
+          </Link>
+        </div>
       ) : (
         <ItemCount stock={producto.stock} onAdd={handleAdd} />
       )}

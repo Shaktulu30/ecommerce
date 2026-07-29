@@ -9,14 +9,16 @@ function Cart() {
     <div className="page">
       <h1>Tu carrito</h1>
       {cart.length === 0 ? (
-        <p>Tu carrito está vacío</p>
+        <p className="cart-empty">Tu carrito está vacío 🛒</p>
       ) : (
         <div>
           {cart.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
           <h3 className="total">Total: ${totalPrecio()}</h3>
-          <Link to="/checkout" className="btn">Finalizar compra</Link>
+          <Link to="/checkout" className="btn">
+            Finalizar compra
+          </Link>
         </div>
       )}
     </div>

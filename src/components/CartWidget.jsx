@@ -1,9 +1,13 @@
 import { useCart } from "../context/CartContext";
 
 function CartWidget() {
-    const { totalItems } = useCart();
+  const { totalItems } = useCart();
 
-    return <span>{totalItems()}</span>;
+  return (
+    <span className="cart-widget">
+      🛒 {totalItems()}
+    </span>
+  );
 }
 
 export default CartWidget;
